@@ -125,184 +125,240 @@ layout: true
 class: center, middle, inverse
 ---
 #Brainhack 2019
-##Introduction
+##Visualisation and Neuroimaging
 
 ---
 layout: false
-.left-column[
-  ## What is Brainhack?
-]
-.right-column[
-Researchers from across the globe and a myriad of disciplines working together on innovative projects related to neuroscience.
+name: content
+class: left
+layout: false
+name: intro
 
-- Brainhack Marburg is part of the Brainhack Global.
-- Working around the world
-- Marburg is the only Brainhack in Germany this year
+## Visualisation
 
-<img src="images/brainhack_map.png" width="100%">
-]
----
-.left-column[
-  ## What is Brainhack?
-  ## What will happen?
-]
-.right-column[
-# Scheduleplan
-## Wednesday
+- In general visualisation is presenting results in a easy understandable way
 
-**08:30 - 09:00** Welcome <br/>
-**09:00 - 10:30** Introduction & Procject Pitches<br/>
-**10:30 - 10:45** Coffee Break</span><br/>
-**10:45 - 12:00** <span style="color:khaki;">Open hacking</span> | <span style="color:LightSkyBlue;">Introduction / Overview Open Science, Platforms (OSF, GitHub)</span><br/>
-**12:00 - 12:30** <span style="color:LightGreen;">Lunch</span><br/>
-**12:30 - 14:00** <span style="color:khaki;">Open hacking</span> | <span style="color:LightSkyBlue;">Open Access, Best Practice</span><br/>
-**14:00 - 14:14** <span style="color:LightGreen;">Coffee Break</span><br/>
-**14:15 - 15:30** <span style="color:khaki;">Open hacking</span> | <span style="color:red;">Open Mic | Ignite Talk</span>
+* Python has many different modules to visualize data:
+
+  * MATLAB based plotting system: `matplotlib`
+
+  * Based on `matplotlib` but nicer looking: `Seaborn` or `Pandas`
+
+  * Interactive plotting tools: `Bokeh`, `Plotly`, `HoloViews`
+
+--
 
 
-<span style="color:LightSkyBlue;">Train track</span>: Short presentation combined with a small workshop to introduce new/important topics.  <br/>
-<span style="color:khaki;">Hack track</span>: Work in groups on given projects of the participants.<br/>
-<span style="color:red;">Ignite talks</span>: Inspired talks to open your mind.<br/>
-<span style="color:LightGreen;">Social events</span>: Go out as group and have some fun.
+  ### Python-graph-gallery
+  Check out the very helpful and cool new homepage https://python-graph-gallery.com/ to see how you can create different kinds of graphs.
 
-]
----
-.left-column[
-  ## What is Brainhack?
-  ## What will happen?
-]
-.right-column[
-# Scheduleplan
-## Thursday
-
-**08:30 - 09:00** Welcome <br/>
-**09:00 - 10:30**  <span style="color:khaki;">Open hacking</span> | <span style="color:LightSkyBlue;">Open Source Software, Bash, Python</span><br/>
-**10:30 - 10:45** Coffee Break</span><br/>
-**10:45 - 12:00** <span style="color:khaki;">Open hacking</span> | <span style="color:LightSkyBlue;">Visualization and Neuroimaging</span><br/>
-**12:00 - 12:30** <span style="color:LightGreen;">Lunch</span><br/>
-**12:30 - 14:00** <span style="color:khaki;">Open hacking</span> | <span style="color:LightSkyBlue;">Virtualization</span><br/>
-**14:00 - 14:14** <span style="color:LightGreen;">Coffee Break</span><br/>
-**14:15 - 15:30** <span style="color:khaki;">Open hacking</span> | <span style="color:red;">Open Mic | Ignite Talk</span>
-
-
-<span style="color:LightSkyBlue;">Train track</span>: Short presentation combined with a small workshop to introduce new/important topics.  <br/>
-<span style="color:khaki;">Hack track</span>: Work in groups on given projects of the participants.<br/>
-<span style="color:red;">Ignite talks</span>: Inspired talks to open your mind.<br/>
-<span style="color:LightGreen;">Social events</span>: Go out as group and have some fun.
-
-]
----
-.left-column[
-  ## What is Brainhack?
-  ## What will happen?
-]
-.right-column[
-# Scheduleplan
-## Friday
-
-**08:30 - 09:00** Welcome <br/>
-**09:00 - 10:30**  <span style="color:khaki;">Open hacking</span> | <span style="color:LightSkyBlue;">BIDS Apps</span><br/>
-**10:30 - 10:45** Coffee Break</span><br/>
-**10:45 - 12:00** Project presentation and disussion<br/>
-**12:00 - 12:30** Wrap-up
-
-
-<span style="color:LightSkyBlue;">Train track</span>: Short presentation combined with a small workshop to introduce new/important topics.  <br/>
-<span style="color:khaki;">Hack track</span>: Work in groups on given projects of the participants.<br/>
-<span style="color:LightGreen;">Social events</span>: Go out as group and have some fun.
-
-]
 
 ---
-.left-column[
-  ## What is Brainhack?
-  ## What will happen?
-  ## Topics
-]
-.right-column[
-## Introduction / Overview Open Science, Platforms (OSF, GitHub)
-- Get an impression what is Open Science
-- Which tools can be used to support Open Science
-- Get introduced to the Open Science Framework (OSF)
-- Get introduced to GitHub
-]
+#Neuroimaging
+
+Nibabel and Nilearn are two python packages that help to load, modify, save and visualize neuroimaging data.
+
+* `Nibabel`'s main focus is on loading and saving any kind of neuroimaging data.
+
+* `Nilearn`'s main focus is on statistical learning (based on `scikit-learn`) but is also very good in manipulation and visualizing neuroimaging data.
+
+* The two software packages together allow you to do almost anything with your data that you want.
+
 ---
 
-.left-column[
-  ## What is Brainhack?
-  ## What will happen?
-  ## Topics
-]
-.right-column[
-## Open Access, Best Practice
-- What is Open Access?
-- What is a preregistration?
-- What is a preprint?
-]
+name: important
+
+##Important Points
+
+```python
+# To import the module
+import nibabel as nb
+```
+```python
+# Load a brain image
+img = nb.load('func.nii.gz')
+```
+```python
+# Get Header, affine or data
+img.header, img.affine, img.get_data()
+```
+```python
+# Interactively view a brain image
+img.orthoview()
+```
+```python
+# Save a brain image
+new_img = nb.Nifti1Image(data, affine=img.affine, header=img.header)
+nb.save(new_img, '/folder/filename.nii.gz')
+```
+
+If you want to inverstigate a brain image directly from the command line / terminal, use `nib-ls`
+
+```
+>>> nib-ls func.nii
+func.nii    int16    [ 64,  64,  30, 184]    4.00x4.00x4.00x2.50    sform
+```
 ---
-.left-column[
-  ## What is Brainhack?
-  ## What will happen?
-  ## Topics
-]
-.right-column[
-## Open Source Software, Bash, Python
-- What is Open Source Software?
-- Get introduced to commom programming languages (Bash, Python)
+name: important
 
-]
+## Important Points
+
+### 1. Image manipulation with nilearn
+
+```python
+from nilearn import image
+```
+```python
+# Create a mean image
+mean = image.mean_img('func.nii.gz')
+```
+```python
+# Resample mean image to anatomy
+mean_new = image.resample_to_img(mean, anat)
+```
+```python
+# Smooth an image
+smoothed_mean = image.smooth_img(mean, fwhm=4)
+```
+```python
+# Clean image (to improve SNR)
+image.clean_img(func, detrend=True, standardize=False, t_r=TR)
+```
+```python
+# Treat a brain image like a numpy array with
+thr = image.threshold_img(mean, threshold='99%')
+cluster = nilearn.regions.connected_regions(thr)[0]
+mask = nli.math_img('np.mean(img,axis=3) > 0', img=cluster)
+```
 ---
-.left-column[
-  ## What is Brainhack?
-  ## What will happen?
-  ## Topics
-]
-.right-column[
-## Visualization and Neuroimaging
-- Do I need Excel/SPSS to make figures/plots?
-- Get introduced to python libraries (matplotlib, seaborn)
-- Do I need Powerpoint for my presentations ?
-- Get introduced to remark
-
-]
----
-.left-column[
-  ## What is Brainhack?
-  ## What will happen?
-  ## Topics
-]
-.right-column[
-## Virtualization
-- What is virtualization?
-- How can I use this?
-- Get introduced to docker and singularity
-
-]
----
-.left-column[
-  ## What is Brainhack?
-  ## What will happen?
-  ## Topics
-]
-.right-column[
-## BIDS Apps
-- What is BIDS?
-- How can I use this?
-- Get introduced to different workflow apps
-
-]
+layout: true
+class: left
 ---
 
-
-template: inverse
-
-## Project Pitches
+```python
+# Apply mask
+from nilearn.masking import apply_mask
+all_timecourses = apply_mask(func, mask)
+```
+```python
+# Revert mask
+from nilearn.masking import unmask
+img_timecourse = unmask(all_timecourses, mask)
+```
+```python
+# Perform Independent Component Analysis (ICA)
+from nilearn.decomposition import CanICA
+canica = CanICA(
+    n_components=10, smoothing_fwhm=6, threshold=3.,
+    verbose=10, random_state=0, n_jobs=-1, standardize=True)
+canica.fit(func)
+```
+```python
+# Perform Dictionary Learning
+from nilearn.decomposition import DictLearning
+dict_learning = DictLearning(
+    n_components=10, n_epochs=1, alpha=1., smoothing_fwhm=6,
+    standardize=True, verbose=1, random_state=0, n_jobs=-1)
+canica.fit(dict_learning)
+```
 ---
-name: project
+### 2. Image visualization with nilearn
 
-#Registerd Projects
+```python
+from nilearn import plotting
+```
+```python
+# Plot Glass Brain
+plotting.plot_glass_brain(
+    func_tmap, threshold=3, colorbar=True, title='fancy title',
+    plot_abs=False, display_mode='lyrz')
+```
+```python
+# Overlay functional image onto anatomical image
+plotting.plot_stat_map(func_tmap, display_mode='z', cut_coords=5,
+                       threshold=2, title="fancy title")
+```
+```python
+# Overlay two images ontop of each other
+plotting.plot_roi('anat1.mgz', 'anat2.nii.gz',
+                  dim=-1, cut_coords=(0, 0, 0))
+```
+```python
+# Create plots with edges
+display = plotting.plot_anat(mean, dim=-0.5)
+display.add_edges(t1, color='r')
+```
+```python
+# Create 3D Surface Plot
+plotting.plot_surf_stat_map(
+    fsaverage.infl_right, texture, hemi='right', title='fancy title',
+    threshold=1., bg_map=fsaverage.sulc_right, view='lateral', cmap='cold_hot')
+plotting.show()
+```
+---
 
-- LAB-QA2GO (Christoph Vogelbacher)
+### 3. Machine learning with nilearn
+
+Nilearn provides many different ways to do machine learning on brain images. The machine learning backend is based on `scikit-learn`.
+
+To cover all of them here would explode the scope of this presentation.
+
+&nbsp;
+
+--
+
+## PyMVPA - Very good machine learning alternative
+
+Let's take a quick look at [PyMVPA](http://www.pymvpa.org/).
+
+---
+## statistics
+
+* Python is a great alternative to `Excel`, `R` or `SPSS` to do statistics
+
+* There are many good modules in Python to do statistics, you will leran four of them:
+
+    * ### `Pandas`
+
+    * ### `scipy.stats`
+
+    * ### `statsmodels`
+
+    * ### `seaborn`
+
+
+---
+
+name: exercise
+
+## Hands on
+
+### Visualisation
+
+Please go now through the jupyter notebook `02_python_visualization.ipynb`
+
+Don't focus too much on how certain things are implemented.
+
+The idea is more that you see the multiple ways you can visualize data in python.
+
+
+### Nilearn
+Please go now through the jupyter notebook `03b_nilearn.ipynb`
+
+### PyMVPA
+Please go now through the jupyter notebook `03c_pymvpa.ipynb`
+
+### Statistics
+Please go now through the jupyter notebook `03_python_statistics.ipynb`
+
+---
+layout: true
+class: center, middle, inverse
+---
+name: questions
+
+# Questions?
+
 
     </textarea>
     <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js"></script>
